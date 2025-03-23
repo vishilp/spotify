@@ -1,0 +1,2 @@
+Create a playlist option (avg out numerical features)
+Ability to rec songs based on numerical features if not in df
