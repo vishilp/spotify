@@ -28,9 +28,5 @@ def recommend_songs(song, df=df, num_rec=5):
 
     # Retrieve recommended songs
     recommendations = similar_songs.iloc[top_songs_indices][["name", "year", "artists"]]
-
-    #clean up the output
-    rec = recommendations[['name', 'artists', 'year']] 
-    rec.index = rec.index + 1
-    json_output = rec.to_json(orient='records', indent=4)
-    return json_output
+    recommendations = recommendations.reset_index(drop=True)
+    return recommendations

@@ -15,7 +15,7 @@ def rec_songs(song_name: str, top_n: int = 5):
     print(song_name)
     recommendations = recommend_songs(song=song_name, num_rec=top_n) 
     return {
-        "recommendations":[recommendations['name']]
+        "recommendations":[recommendations['name'], recommendations['artists']]
     }
     
 # query template:
