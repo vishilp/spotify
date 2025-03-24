@@ -2,9 +2,9 @@ from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
 import numpy as np
 
-df = pd.read_csv("data/clustered_df.csv")
+df = pd.read_csv("../data/clustered_df.csv")
 
-def recommend_songs(song, df, num_rec=5):
+def recommend_songs(song, df=df, num_rec=5):
     # Find what cluster input song belongs to and extract the cluster songs
     is_present_in_col = df['name'].isin([song]).any()
     if is_present_in_col == False:
@@ -29,4 +29,8 @@ def recommend_songs(song, df, num_rec=5):
     # Retrieve recommended songs
     recommendations = similar_songs.iloc[top_songs_indices][["name", "year", "artists"]]
 
-    return recommendations
+    #clean up the output
+    rec = recommendations[['name', 'artists', 'year']] 
+    rec.index = rec.index + 1
+    json_output = rec.to_json(orient='records', indent=4)
+    return json_output
