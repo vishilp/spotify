@@ -2,7 +2,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import pandas as pd
 import numpy as np
 
-df = pd.read_csv("../data/clustered_df.csv")
+df = pd.read_csv("data/clustered_df.csv")
 
 def recommend_songs(song, df=df, num_rec=5):
     # Find what cluster input song belongs to and extract the cluster songs

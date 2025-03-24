@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from rec import recommend_songs
+from .rec import recommend_songs
 
 
 # Initialize FastAPI
